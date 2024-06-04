@@ -110,4 +110,15 @@ ls.add_snippets(nil, {
     },
 })
  
- 
+ls.add_snippets(nil, {
+    all = {
+        snip({
+            trig = "importpair",  -- Change trigger to something meaningful, e.g., "cpptemplate".
+            name = "first and second for pairs",  -- Corrected typo: "name" instead of "namr".
+            dscr = "f first, s second",  -- Corrected typo: "dscr" instead of "dsc".
+        }, {
+            text({ "#define f first" }),
+            text({"", "#define s second" }),
+        }),
+    },
+})

@@ -7,7 +7,6 @@ set backspace=2
 
 func! Run()
     exec "w"
-    exec "cd %"
     exec "sp"
     exec "resize 10"
 	if &filetype == "cpp"
