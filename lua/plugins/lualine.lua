@@ -2,7 +2,7 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
-    -- theme = 'solarized_light',
+    -- theme = 'base16-gruvbox-material-dark-medium',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {

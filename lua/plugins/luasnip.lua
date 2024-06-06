@@ -59,6 +59,7 @@ ls.add_snippets(nil, {
             text({ "", "" }),
             text({ "", "void solve() {" }),
             text({ "", "\t" }),
+            i(1, ""),
             text({ "", "}" }),
             text({ "", "" }),
             text({ "", "int main() {" }),
@@ -85,7 +86,8 @@ ls.add_snippets(nil, {
         }),
     },
 })
- 
+
+
 ls.add_snippets(nil, {
     all = {
         snip({

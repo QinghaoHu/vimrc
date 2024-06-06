@@ -23,6 +23,7 @@ require ("plugins.kanagawa")
 require ("plugins.noice")
 require ("plugins.telescope")
 require ("plugins.dashboard")
+require ("plugins.gruvbox")
 -- require ("plugins.golden")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -30,3 +31,4 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         virtual_text = false
     }
 )
+

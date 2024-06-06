@@ -53,7 +53,8 @@ tnoremap <Esc> <C-\><C-n>
 noremap <C-s> :w<CR>
 
 colorscheme kanagawa
-" colorscheme gruvbox8
+" colorscheme gruvbox
+" colorscheme gruvbox8_hard
 " colorscheme solarized8_flat
 " colorscheme tokyonight-night
 " colorscheme onedark

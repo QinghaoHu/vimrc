@@ -40,6 +40,7 @@ require('lazy').setup({
     { 'sainnhe/gruvbox-material' },
     { 'lifepillar/vim-gruvbox8' },
     { 'lifepillar/vim-solarized8' },
+    { "ellisonleao/gruvbox.nvim" },
     { 'RRethy/base16-nvim' },
 
     -- Status line
@@ -74,9 +75,12 @@ require('lazy').setup({
     },
     { 'hrsh7th/nvim-cmp' },
     { 'hrsh7th/cmp-nvim-lsp' },
-    { 'L3MON4D3/LuaSnip' },
     { 'saadparwaiz1/cmp_luasnip' },
     { 'hrsh7th/cmp-path' },
+    {
+      "L3MON4D3/LuaSnip",
+      dependencies = { "rafamadriz/friendly-snippets" },
+    },
 
     -- Additional plugins
     {
@@ -118,7 +122,6 @@ require('lazy').setup({
     },
     { 'numToStr/Comment.nvim' },
     { 'windwp/nvim-autopairs' },
-    { 'rafamadriz/friendly-snippets' },
     { 'akinsho/bufferline.nvim' },
     { 'lewis6991/gitsigns.nvim' },
     { 'lukas-reineke/indent-blankline.nvim' },
