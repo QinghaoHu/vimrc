@@ -20,3 +20,5 @@ require('base16-colorscheme').with_config({
     dapui = true,
 })
 
+vim.cmd[[colorscheme kanagawa-wave]]
+

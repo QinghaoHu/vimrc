@@ -7,7 +7,6 @@ vim.o.guifont = "Inconsolata Nerd Font Mono:h13"
 -- vim.o.guifont = "Consolas:h11"
 
 require ("core.options")
-require ("core.keymaps")
 require ("plugins.lazy")
 require ("plugins.lualine")
 require ("plugins.nvim-tree")
@@ -17,14 +16,16 @@ require ("plugins.cmp")
 require ("plugins.comment")
 require ("plugins.autopairs")
 require ("plugins.ibl")
-require ("plugins.bufferlines")
 require ("plugins.luasnip")
 require ("plugins.kanagawa")
 require ("plugins.noice")
 require ("plugins.telescope")
 require ("plugins.dashboard")
-require ("plugins.gruvbox")
+-- require ("plugins.gruvbox")
 -- require ("plugins.golden")
+-- require ("plugins.solarized")
+require ("plugins.bufferlines")
+require ("core.keymaps")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
