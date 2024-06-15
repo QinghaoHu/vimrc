@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 function Run()
     vim.cmd('w')
     vim.cmd('sp')
-    vim.cmd('resize 10')
+    vim.cmd('resize 8')
     if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
         vim.cmd('term g++ -O2 -std=c++17 -Wall -Wextra -Wfatal-errors % -o %<')
     elseif vim.bo.filetype == 'java' then
@@ -22,7 +22,7 @@ function Mode()
     if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
         vim.cmd('w')
         vim.cmd('sp')
-        vim.cmd('resize 10')
+        vim.cmd('resize 8')
         vim.cmd('term ./%<')
     elseif vim.bo.filetype == 'java' then
         vim.cmd('w')
