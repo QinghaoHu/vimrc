@@ -41,7 +41,7 @@ require('solarized').setup({
     },
     highlights = {},
     colors = {},
-    theme = 'neo', -- or 'neo'
+    theme = 'default', -- or 'neo'
     autocmd = true,
     styles = {
       comments = { italic = false, bold = false },
@@ -50,4 +50,6 @@ require('solarized').setup({
     }
 })
 
-vim.cmd.colorscheme = 'solarized' -- or selenized
+vim.cmd[[colorscheme solarized8_low]]
+vim.o.background = "light"
+

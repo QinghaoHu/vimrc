@@ -20,7 +20,6 @@ local text = ls.text_node
  
 -- Define the C++ template snippet.
  
- 
 ls.add_snippets(nil, {
     all = {
         snip({
@@ -59,17 +58,16 @@ ls.add_snippets(nil, {
             text({ "", "" }),
             text({ "", "void solve() {" }),
             text({ "", "\t" }),
-            i(1, ""),
             text({ "", "}" }),
             text({ "", "" }),
             text({ "", "int main() {" }),
             text({ "", "\tios::sync_with_stdio(false);" }),
-            text({ "", "\tcin.tie (nullptr);" }),
+            text({ "", "\tcin.tie(nullptr);" }),
             text({ "", "" }),
             text({ "", "\tint T = 1;" }),
             text({ "", "\t//cin >> T;" }),
             text({ "", "" }),
-            text({ "", "\twhile(T --) {" }),
+            text({ "", "\twhile (T --) {" }),
             text({ "", "\t\tsolve();" }),
             text({ "", "\t}" }),
             text({ "", "" }),
@@ -124,3 +122,6 @@ ls.add_snippets(nil, {
         }),
     },
 })
+
+
+

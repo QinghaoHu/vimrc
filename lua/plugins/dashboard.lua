@@ -29,6 +29,5 @@ local db = require ('dashboard')
           key = 'd',
         },
       },
-    footer = {" To Steve Jobs!  to keep practice!"}, -- footer
     },
   })
