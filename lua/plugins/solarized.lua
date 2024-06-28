@@ -50,6 +50,6 @@ require('solarized').setup({
     }
 })
 
-vim.cmd[[colorscheme solarized8_low]]
+vim.cmd[[colorscheme solarized]]
 vim.o.background = "light"
 

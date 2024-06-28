@@ -22,6 +22,9 @@ require("gruvbox").setup({
   overrides = {},
   dim_inactive = false,
   transparent_mode = false,
+  overrides = {
+    SignColumn = {bg = "#ff9900"}
+  }
 })
--- vim.cmd("colorscheme gruvbox")
-vim.cmd[[colorscheme gruvbox8_hard]]
+vim.o.background = "dark"
+vim.cmd[[colorscheme gruvbox]]
