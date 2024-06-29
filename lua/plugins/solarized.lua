@@ -3,7 +3,7 @@ vim.o.background = 'light'
 -- default config
 require('solarized').setup({
     transparent = false, -- enable transparent background
-    palette = 'solarized', -- or selenized
+    palette = 'selenized', -- or selenized
     styles = {
       comments = {},
       functions = {},

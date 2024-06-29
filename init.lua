@@ -1,15 +1,12 @@
--- vim.o.guifont = "FiraCode Nerd Font:h6"
--- vim.o.guifont = "Hack Nerd Font Mono:h6.5"
+-- vim.o.guifont = "FiraCode Nerd Font:h10"
+vim.o.guifont = "Hack Nerd Font Mono:h10.5"
 -- vim.o.guifont = "Monaco Nerd Font Regular:h6"
 -- vim.o.guifont = "UbuntuMono Nerd Font Mono:h7.5"
 -- vim.o.guifont = "UbuntuSansMono Nerd Font Mono:h12"
-vim.o.guifont = "Inconsolata Nerd Font Mono:h7"
+-- vim.o.guifont = "Inconsolata Nerd Font Mono:h12"
 -- vim.o.guifont = "VictorMono NFM:h6"
 -- vim.o.guifont = "MonaspiceXe Nerd Font Mono:h6"
 -- vim.o.guifont = "Consolas:h11"
-
-
-
 require ("core.options")
 require ("plugins.lazy")
 require ("plugins.lualine")
@@ -26,9 +23,9 @@ require ("plugins.noice")
 require ("plugins.telescope")
 require ("plugins.dashboard")
 -- require ("plugins.monokai")
--- require ("plugins.gruvbox")
+require ("plugins.gruvbox")
 -- require ("plugins.golden")
-require ("plugins.solarized")
+-- require ("plugins.solarized")
 require ("plugins.bufferlines")
 require ("core.keymaps")
 

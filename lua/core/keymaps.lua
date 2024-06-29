@@ -32,6 +32,13 @@ function Mode()
     end
 end
 
+function Check()
+    vim.cmd('w')
+    vim.cmd('sp')
+    vim.cmd('resize 8')
+    vim.cmd('term check ./%<')
+end
+
 
 vim.api.nvim_set_keymap('n', '<F8>', ':lua insert_template()<CR>', { noremap = true, silent = true })
 
@@ -42,7 +49,7 @@ vim.api.nvim_set_keymap('n', 'H', ':bp<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<F6>', ':set hlsearch<CR>:/', {noremap = true})
 vim.api.nvim_set_keymap('n', '<F7>', ':e ~/cslearning/cptemplate/', {noremap = true})
 vim.api.nvim_set_keymap('n', 'x', ':bd<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<F12>', ':w<CR>:sp<CR>:resize 10<CR>:term ./%< <in', {noremap = true})
+vim.api.nvim_set_keymap('n', '<F12>', ':lua Check()<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', 'J', ':u<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<F9>', ':lua Run()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<F11>', ':lua Mode()<CR>', { noremap = true })
