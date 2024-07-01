@@ -20,6 +20,8 @@ require('base16-colorscheme').with_config({
     dapui = true,
 })
 
+-- lua/custom_kanagawa.lua
+
 vim.cmd[[colorscheme kanagawa-wave]]
 -- vim.cmd[[colorscheme gruvbox8]]
 -- vim.cmd[[colorscheme tokyonight-storm]]

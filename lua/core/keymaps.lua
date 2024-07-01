@@ -6,7 +6,7 @@ function Run()
     vim.cmd('sp')
     vim.cmd('resize 8')
     if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
-        vim.cmd('term g++ -O2 -std=c++17 -Wall -Wextra -Wfatal-errors % -o %<')
+        vim.cmd('term g++ -O2 -std=c++17 -Wall -Wextra -Wfatal-errors -Wshadown -Wformat=2 -Wfloat-equal -Wconversion % -o %<')
     elseif vim.bo.filetype == 'java' then
         vim.cmd('term javac %')
     elseif vim.bo.filetype == 'python' then

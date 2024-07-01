@@ -44,7 +44,6 @@ require('lazy').setup({
   { 'lifepillar/vim-solarized8' },
   { 'ellisonleao/gruvbox.nvim' },
   { 'RRethy/base16-nvim' },
-  { 'maxmx03/solarized.nvim' },
 
   -- Status line
   {
@@ -126,6 +125,9 @@ require('lazy').setup({
   {
     'navarasu/onedark.nvim'
   },
+  {
+    'ishan9299/nvim-solarized-lua'
+  }
 })
 
 -- If lazy_bootstrap was true, sync plugins
