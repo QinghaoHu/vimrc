@@ -1,5 +1,5 @@
 -- vim.o.guifont = "FiraCode Nerd Font:h10"
-vim.o.guifont = "Hack Nerd Font Mono:h10.5"
+vim.o.guifont = "Hack Nerd Font Mono:h9.5"
 -- vim.o.guifont = "Monaco Nerd Font Regular:h6"
 -- vim.o.guifont = "UbuntuMono Nerd Font Mono:h7.5"
 -- vim.o.guifont = "UbuntuSansMono Nerd Font Mono:h12"
@@ -11,7 +11,7 @@ require ("core.options")
 require ("plugins.lazy")
 require ("plugins.lualine")
 require ("plugins.nvim-tree")
-require ("plugins.treesitter")
+-- require ("plugins.treesitter")
 require ("plugins.lsp")
 require ("plugins.cmp")
 require ("plugins.comment")
@@ -19,7 +19,7 @@ require ("plugins.autopairs")
 require ("plugins.ibl")
 require ("plugins.luasnip")
 require ("plugins.kanagawa")
-require ("plugins.noice")
+-- require ("plugins.noice")
 require ("plugins.telescope")
 require ("plugins.dashboard")
 -- require ("plugins.monokai")

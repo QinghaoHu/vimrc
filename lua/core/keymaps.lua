@@ -6,7 +6,7 @@ function Run()
     vim.cmd('sp')
     vim.cmd('resize 8')
     if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
-        vim.cmd('term g++ -O2 -std=c++17 -Wall -Wextra -Wfatal-errors -Wshadown -Wformat=2 -Wfloat-equal -Wconversion % -o %<')
+        vim.cmd('term g++ -O2 -std=c++17 -Wall -Wextra -Wfatal-errors -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Winvalid-pch % -o %<')
     elseif vim.bo.filetype == 'java' then
         vim.cmd('term javac %')
     elseif vim.bo.filetype == 'python' then
@@ -49,7 +49,6 @@ vim.api.nvim_set_keymap('n', 'H', ':bp<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<F6>', ':set hlsearch<CR>:/', {noremap = true})
 vim.api.nvim_set_keymap('n', '<F7>', ':e ~/cslearning/cptemplate/', {noremap = true})
 vim.api.nvim_set_keymap('n', 'x', ':bd<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<F12>', ':lua Check()<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', 'J', ':u<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<F9>', ':lua Run()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<F11>', ':lua Mode()<CR>', { noremap = true })
@@ -91,5 +90,3 @@ end
 _G.insert_template = insert_template
 
 vim.api.nvim_set_keymap('n', '<F8>', ':lua insert_template()<CR>', { noremap = true, silent = true })
-
-

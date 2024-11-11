@@ -11,10 +11,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
-
-
-
 require('lazy').setup({
   -- Lazy.nvim itself
   { 'folke/lazy.nvim' },
@@ -43,7 +39,7 @@ require('lazy').setup({
   { 'lifepillar/vim-gruvbox8' },
   { 'lifepillar/vim-solarized8' },
   { 'ellisonleao/gruvbox.nvim' },
-  { 'RRethy/base16-nvim' },
+  -- { 'RRethy/base16-nvim' },
 
   -- Status line
   {
@@ -59,15 +55,6 @@ require('lazy').setup({
 
   -- Window navigation
   { 'christoomey/vim-tmux-navigator' },
-
-  -- Treesitter
-  {
-    'nvim-treesitter/nvim-treesitter',
-    run = function()
-      require('nvim-treesitter.install').update({ with_sync = true })
-    end
-  },
-  { 'p00f/nvim-ts-rainbow' },
 
   -- LSP and completion
   {
@@ -103,21 +90,21 @@ require('lazy').setup({
   { 'akinsho/bufferline.nvim' },
   { 'lewis6991/gitsigns.nvim' },
   { 'lukas-reineke/indent-blankline.nvim' },
-  {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      'MunifTanjim/nui.nvim',
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      'rcarriga/nvim-notify',
-    }
-  },
+  -- {
+  --   'folke/noice.nvim',
+  --   event = 'VeryLazy',
+  --   opts = {
+  --     -- add any options here
+  --   },
+  --   dependencies = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     'MunifTanjim/nui.nvim',
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
+  --     'rcarriga/nvim-notify',
+  --   }
+  -- },
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.6',
     dependencies = { 'nvim-lua/plenary.nvim' }
