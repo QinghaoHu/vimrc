@@ -1,10 +1,9 @@
-vim.g.mapleader = " "
 --compile
 -- Define the Run function
 function Run()
     vim.cmd('w')
     vim.cmd('sp')
-    vim.cmd('resize 8')
+    vim.cmd('resize 30')
     if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
         vim.cmd('term g++ -O2 -std=c++17 -Wall -Wextra -Wfatal-errors -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Winvalid-pch % -o %<')
     elseif vim.bo.filetype == 'java' then
@@ -22,25 +21,34 @@ function Mode()
     if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
         vim.cmd('w')
         vim.cmd('sp')
-        vim.cmd('resize 8')
+        vim.cmd('resize 30')
         vim.cmd('term ./%<')
     elseif vim.bo.filetype == 'java' then
         vim.cmd('w')
         vim.cmd('sp')
-        vim.cmd('resize 10')
+        vim.cmd('resize 30')
         vim.cmd('term java %<')
     end
 end
 
-function Check()
+function judge()
     vim.cmd('w')
+    vim.cmd('cd %:p:h')
     vim.cmd('sp')
-    vim.cmd('resize 8')
-    vim.cmd('term check ./%<')
+    vim.cmd('resize 30')
+    vim.cmd('FTermToggle')
+    vim.cmd('term judge ./%<')
 end
 
+local fterm = require("FTerm")
 
-vim.api.nvim_set_keymap('n', '<F8>', ':lua insert_template()<CR>', { noremap = true, silent = true })
+function Check()
+    vim.cmd('w')  -- Save the current file
+    vim.cmd('cd %:p:h')  -- Change to the file's directory
+    fterm.scratch({
+        cmd = "judge ./" .. vim.fn.expand('%:t:r')
+    })
+end
 
 --nvimtree
 vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle<CR>', {noremap = true})
@@ -54,7 +62,7 @@ vim.api.nvim_set_keymap('n', '<F9>', ':lua Run()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<F11>', ':lua Mode()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<F3>', ':Trouble diagnostics toggle<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-a>', 'ggVG', { noremap = true })
-vim.api.nvim_set_keymap('n', '<F10>', ':cd %:p:h<CR>:sp<CR>:resize 10<CR>:terminal<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<F10>', ':FTermToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<backspace>', ':noh<CR>', {noremap = true})
@@ -90,3 +98,6 @@ end
 _G.insert_template = insert_template
 
 vim.api.nvim_set_keymap('n', '<F8>', ':lua insert_template()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F12>', ':lua Check()<CR>', {noremap = true})
+
+

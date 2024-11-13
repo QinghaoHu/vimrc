@@ -1,12 +1,13 @@
--- vim.o.guifont = "FiraCode Nerd Font:h10"
-vim.o.guifont = "Hack Nerd Font Mono:h9.5"
+-- vim.o.guifont = "FiraCode Nerd Font:h10" 
+-- vim.o.guifont = "Hack Nerd Font Mono:h9"
 -- vim.o.guifont = "Monaco Nerd Font Regular:h6"
 -- vim.o.guifont = "UbuntuMono Nerd Font Mono:h7.5"
 -- vim.o.guifont = "UbuntuSansMono Nerd Font Mono:h12"
 -- vim.o.guifont = "Inconsolata Nerd Font Mono:h12"
 -- vim.o.guifont = "VictorMono NFM:h6"
--- vim.o.guifont = "MonaspiceXe Nerd Font Mono:h6"
+-- vim.o.guifont = "MonaspiceNe Nerd Font:h9.5"
 -- vim.o.guifont = "Consolas:h11"
+vim.o.guifont = "DejaVu Sans Mono for Powerline:h9"
 require ("core.options")
 require ("plugins.lazy")
 require ("plugins.lualine")
@@ -27,7 +28,9 @@ require ("plugins.dashboard")
 -- require ("plugins.solarizedlua")
 -- require ("plugins.golden")
 require ("plugins.bufferlines")
+require("plugins.fterm")
 require ("core.keymaps")
+
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {

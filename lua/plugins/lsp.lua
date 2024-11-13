@@ -27,6 +27,7 @@ require("lspconfig").lua_ls.setup {
 
 require("lspconfig").clangd.setup {
   capabilities = capabilities,
+  cmd = {"clangd", "--header-insertion=never"},
 }
 
 

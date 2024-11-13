@@ -52,6 +52,9 @@ require('lazy').setup({
     'nvim-tree/nvim-tree.lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
+  {
+    'numToStr/FTerm.nvim'
+  },
 
   -- Window navigation
   { 'christoomey/vim-tmux-navigator' },
@@ -69,6 +72,10 @@ require('lazy').setup({
   {
     'L3MON4D3/LuaSnip',
     dependencies = { 'rafamadriz/friendly-snippets' },
+  },
+
+  {
+    'numToStr/FTerm.nvim'
   },
 
   -- Additional plugins
