@@ -16,31 +16,24 @@ function Run()
 end
 
 -- Define the Mode function
+local fterm = require("FTerm")
+
 function Mode()
     vim.cmd('w')
     if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
         vim.cmd('w')
-        vim.cmd('sp')
-        vim.cmd('resize 30')
-        vim.cmd('term ./%<')
+        vim.cmd('cd %:p:h')  -- Change to the file's directory
+        fterm.scratch({
+            cmd = "./" .. vim.fn.expand('%:t:r')
+        })
     elseif vim.bo.filetype == 'java' then
-        vim.cmd('w')
-        vim.cmd('sp')
-        vim.cmd('resize 30')
-        vim.cmd('term java %<')
+        vim.cmd('w')  -- Save the current file
+        vim.cmd('cd %:p:h')  -- Change to the file's directory
+        fterm.scratch({
+            cmd = "java " .. vim.fn.expand('%:t:r')
+        })
     end
 end
-
-function judge()
-    vim.cmd('w')
-    vim.cmd('cd %:p:h')
-    vim.cmd('sp')
-    vim.cmd('resize 30')
-    vim.cmd('FTermToggle')
-    vim.cmd('term judge ./%<')
-end
-
-local fterm = require("FTerm")
 
 function Check()
     vim.cmd('w')  -- Save the current file
