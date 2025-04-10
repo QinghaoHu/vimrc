@@ -7,7 +7,7 @@ opt.number = true
 -- 缩进
 opt.tabstop = 4
 opt.shiftwidth = 4
-opt.expandtab = true
+opt.expandtab = false
 opt.autoindent = true
 
 -- 防止包裹
@@ -42,3 +42,21 @@ opt.backspace = '2'
 
 vim.fn.sign_define('meow', { numhl = 'something' })
 vim.fn.sign_place(2, '', 'meow', '', { lnum = 1 })
+
+-- fold setting
+vim.o.foldenable = true        -- Keep folds enabled
+vim.o.foldmethod = "syntax"    -- Or "syntax" / "indent" based on your preference
+vim.o.foldlevel = 99           -- Open all folds by default
+vim.o.viewoptions = "folds" -- Save folds and cursor position
+
+-- Auto-save folds on exit
+vim.api.nvim_create_autocmd({"BufWinLeave"}, {
+  pattern = {"*"},
+  command = "silent! mkview"
+})
+
+-- Auto-restore folds when opening files
+vim.api.nvim_create_autocmd({"BufWinEnter"}, {
+  pattern = {"*"},
+  command = "silent! loadview"
+})

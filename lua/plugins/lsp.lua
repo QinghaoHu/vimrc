@@ -27,7 +27,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 --
 require("lspconfig").clangd.setup {
   capabilities = capabilities,
-  cmd = {"clangd", "--header-insertion=never"},
+  cmd = {"clangd", "--header-insertion=never", "--background-index", "--clang-tidy=false"},
 }
 
 

@@ -15,55 +15,14 @@ require('lazy').setup({
   -- Lazy.nvim itself
   { 'folke/lazy.nvim' },
 
-  -- Icon dependencies
-  { 'nvim-tree/nvim-web-devicons' },
-
-  -- Dashboard
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {
-        -- config
-      }
-    end,
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
-  },
-
-  -- Color schemes
-  { 'Mofiqul/vscode.nvim' },
-  { 'rebelot/kanagawa.nvim' },
-  { 'folke/tokyonight.nvim' },
-  { 'loctvl842/monokai-pro.nvim' },
-  { 'sainnhe/gruvbox-material' },
-  { 'lifepillar/vim-gruvbox8' },
-  { 'lifepillar/vim-solarized8' },
-  { 'ellisonleao/gruvbox.nvim' },
-  -- { 'RRethy/base16-nvim' },
-
-  -- Status line
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
-  },
-
-  -- File tree
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
-  },
-  {
-    'numToStr/FTerm.nvim'
-  },
-
-  -- Window navigation
-  { 'christoomey/vim-tmux-navigator' },
-
   -- LSP and completion
   {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig'
+  },
+  {
+	"rebelot/kanagawa.nvim"
   },
   { 'hrsh7th/nvim-cmp' },
   { 'hrsh7th/cmp-nvim-lsp' },
@@ -77,6 +36,7 @@ require('lazy').setup({
   {
     'numToStr/FTerm.nvim'
   },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
   -- Additional plugins
   {
@@ -94,34 +54,47 @@ require('lazy').setup({
   },
   { 'numToStr/Comment.nvim' },
   { 'windwp/nvim-autopairs' },
-  { 'akinsho/bufferline.nvim' },
   { 'lewis6991/gitsigns.nvim' },
   { 'lukas-reineke/indent-blankline.nvim' },
-  -- {
-  --   'folke/noice.nvim',
-  --   event = 'VeryLazy',
-  --   opts = {
-  --     -- add any options here
-  --   },
-  --   dependencies = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     'MunifTanjim/nui.nvim',
-  --     -- OPTIONAL:
-  --     --   `nvim-notify` is only needed, if you want to use the notification view.
-  --     --   If not available, we use `mini` as the fallback
-  --     'rcarriga/nvim-notify',
-  --   }
-  -- },
-  {
-    'nvim-telescope/telescope.nvim', tag = '0.1.6',
-    dependencies = { 'nvim-lua/plenary.nvim' }
-  },
-  {
-    'navarasu/onedark.nvim'
-  },
-  {
-    'ishan9299/nvim-solarized-lua'
-  }
+	{
+		'nvim-lualine/lualine.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' }
+	},
+	{
+	  "nvim-tree/nvim-tree.lua",
+	  version = "*",
+	  lazy = false,
+	  dependencies = {
+		"nvim-tree/nvim-web-devicons",
+	  },
+	  config = function()
+		require("nvim-tree").setup {}
+	  end,
+	},
+	{'christoomey/vim-tmux-navigator'},
+	--colorscheme
+	{'Mofiqul/vscode.nvim'},
+	{'lifepillar/vim-solarized8'},
+	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+	{'navarasu/onedark.nvim'},
+	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+	-- lazy.nvim
+	{
+	  "folke/noice.nvim",
+	  event = "VeryLazy",
+	  opts = {
+		-- add any options here
+	  },
+	  dependencies = {
+		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+		"MunifTanjim/nui.nvim",
+		-- OPTIONAL:
+		--   `nvim-notify` is only needed, if you want to use the notification view.
+		--   If not available, we use `mini` as the fallback
+		-- "rcarriga/nvim-notify",
+		}
+	},
+	{ 'nyoom-engineering/oxocarbon.nvim'},
 })
 
 -- If lazy_bootstrap was true, sync plugins
