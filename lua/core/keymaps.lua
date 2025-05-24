@@ -19,7 +19,7 @@ end
 -- Define the Mode function
 local fterm = require("FTerm")
 
-function Mode()
+function Mode1()
     vim.cmd('w')
     if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
         vim.cmd('w')
@@ -36,10 +36,14 @@ function Mode()
     end
 end
 
-function Mod()
+function Modd()
     vim.cmd('w')
     if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
-        vim.cmd('!alacritty -e "./%<"');
+        vim.cmd('w')  -- Save the current file
+        vim.cmd('cd %:p:h')  -- Change to the file's directory
+        fterm.scratch({
+            cmd = "./ " .. vim.fn.expand('%:t:r')
+        })
     elseif vim.bo.filetype == 'java' then
         vim.cmd('w')  -- Save the current file
         vim.cmd('cd %:p:h')  -- Change to the file's directory
@@ -49,6 +53,33 @@ function Mod()
     end
 end
 
+function Mode()
+  vim.cmd('w')  -- Save the file
+
+  local file_dir = vim.fn.expand('%:p:h')
+  local file_name_wo_ext = vim.fn.expand('%:t:r')
+  local filetype = vim.bo.filetype
+
+  local wait_key = "read -n 1 -s -r -p 'Press any key to exit...'"
+  local cmd = ""
+
+  if filetype == 'cpp' or filetype == 'cc' then
+    cmd = string.format(
+      "foot -e bash -c 'cd \"%s\" && time ./\"%s\"; %s'",
+      file_dir, file_name_wo_ext, wait_key
+    )
+  elseif filetype == 'java' then
+    cmd = string.format(
+      "foot -e bash -c 'cd \"%s\" && java \"%s\"; %s'",
+      file_dir, file_name_wo_ext, wait_key
+    )
+  else
+    vim.notify("Unsupported filetype: " .. filetype, vim.log.levels.WARN)
+    return
+  end
+
+  vim.fn.jobstart(cmd, { detach = true })
+end
 
 function Check()
     vim.cmd('w')  -- Save the current file
@@ -78,7 +109,6 @@ vim.api.nvim_set_keymap('n', '<f2>', ':NvimTreeToggle<CR>', {noremap = true})
 vim.keymap.set("n", "D", '"_D')
 vim.keymap.set("n", "dd", '"_dd')
 vim.keymap.set("n", "dw", '"_dw')
-vim.keymap.set("i", "jk", "<ESC>")
 
 local function insert_template()
   local template_path = vim.fn.input("Template Path: ", "~/cslearning/cptemplate/templates/competitive Programming Templates/", "file")
@@ -126,3 +156,11 @@ end
 
 -- Map the toggle function to <leader>cs
 vim.keymap.set("n", "<f5>", toggle_colorscheme, { desc = "Toggle Colorscheme + Background" })
+
+
+vim.keymap.set('n', '<F10>', function()
+  local filepath = vim.fn.expand('%:p:h')
+  vim.fn.jobstart({ 'foot', '-e', 'sh', '-c', 'cd ' .. filepath .. ' && exec $SHELL' }, {
+    detach = true
+  })
+end, { desc = 'Open foot terminal at current file location' })

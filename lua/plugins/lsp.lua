@@ -31,9 +31,9 @@ require("lspconfig").clangd.setup {
 }
 
 
--- require("lspconfig").jdtls.setup {
---   capabilities = capabilities,
--- }
+require("lspconfig").jdtls.setup {
+  capabilities = capabilities,
+}
 
 -- require ("lspconfig").vimls.setup {
 --     capabilities = capabilities,

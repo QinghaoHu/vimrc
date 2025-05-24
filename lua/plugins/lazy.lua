@@ -74,27 +74,31 @@ require('lazy').setup({
 	{'christoomey/vim-tmux-navigator'},
 	--colorscheme
 	{'Mofiqul/vscode.nvim'},
-	{'lifepillar/vim-solarized8'},
 	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 	{'navarasu/onedark.nvim'},
 	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 	-- lazy.nvim
-	{
-	  "folke/noice.nvim",
-	  event = "VeryLazy",
-	  opts = {
-		-- add any options here
-	  },
-	  dependencies = {
-		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-		"MunifTanjim/nui.nvim",
-		-- OPTIONAL:
-		--   `nvim-notify` is only needed, if you want to use the notification view.
-		--   If not available, we use `mini` as the fallback
-		-- "rcarriga/nvim-notify",
-		}
-	},
+	-- {
+	--   "folke/noice.nvim",
+	--   event = "VeryLazy",
+	--   opts = {
+	-- 	-- add any options here
+	--   },
+	--   dependencies = {
+	-- 	-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+	-- 	"MunifTanjim/nui.nvim",
+	-- 	-- OPTIONAL:
+	-- 	--   `nvim-notify` is only needed, if you want to use the notification view.
+	-- 	--   If not available, we use `mini` as the fallback
+	-- 	-- "rcarriga/nvim-notify",
+	-- 	}
+	-- },
 	{ 'nyoom-engineering/oxocarbon.nvim'},
+	-- {'shaunsingh/solarized.nvim'},
+	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+	{"lifepillar/vim-solarized8"},
+	{"wsdjeg/terminal.nvim"},
+	{"wsdjeg/scrollbar.nvim"},
 })
 
 -- If lazy_bootstrap was true, sync plugins
