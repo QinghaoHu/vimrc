@@ -1,6 +1,5 @@
---compile
 -- Define the Run function
-function Run()
+function R()
     vim.cmd('w')
     vim.cmd('sp')
     vim.cmd('resize 30')
@@ -19,7 +18,7 @@ end
 -- Define the Mode function
 local fterm = require("FTerm")
 
-function Mode1()
+function M()
     vim.cmd('w')
     if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
         vim.cmd('w')
@@ -95,16 +94,17 @@ vim.api.nvim_set_keymap('n', 'H', ':bp<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<F6>', ':set hlsearch<CR>:/', {noremap = true})
 vim.api.nvim_set_keymap('n', '<F7>', ':e ~/cslearning/cptemplate/', {noremap = true})
 vim.api.nvim_set_keymap('n', 'x', ':bd<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', 'J', ':u<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<F9>', ':lua Run()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<F11>', ':lua Mode()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'U', ':u<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<F9>', ':lua R()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<F11>', ':lua M()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<F3>', ':Trouble diagnostics toggle<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-a>', 'ggVG', { noremap = true })
 vim.api.nvim_set_keymap('n', '<F10>', ':cd %:p:h<CR>:FTermToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<backspace>', ':noh<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<f2>', ':NvimTreeToggle<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<C-s>', ':lua f', {noremap = true})
 
 vim.keymap.set("n", "D", '"_D')
 vim.keymap.set("n", "dd", '"_dd')
@@ -131,9 +131,10 @@ vim.api.nvim_set_keymap('n', '<F12>', ':lua Check()<CR>', {noremap = true})
 
 -- Define two color schemes and their background preferences
 local colorschemes = {
-  { name = "kanagawa", background = "dark" },
-  { name = "onedark", background = "dark" },
-  { name = "vscode", background = "dark" },
+  { name = "kanagawa-wave", background = "dark" },
+  { name = "kanagawa-dragon", background = "dark" },
+  { name = "onedark", background = "light" },
+  { name = "solarized8_flat", background = "light" }
 }
 
 local current_index = 1
@@ -158,9 +159,43 @@ end
 vim.keymap.set("n", "<f5>", toggle_colorscheme, { desc = "Toggle Colorscheme + Background" })
 
 
-vim.keymap.set('n', '<F10>', function()
-  local filepath = vim.fn.expand('%:p:h')
-  vim.fn.jobstart({ 'foot', '-e', 'sh', '-c', 'cd ' .. filepath .. ' && exec $SHELL' }, {
-    detach = true
-  })
-end, { desc = 'Open foot terminal at current file location' })
+-- vim.keymap.set('n', '<F10>', function()
+--   local filepath = vim.fn.expand('%:p:h')
+--   vim.fn.jobstart({ 'foot', '-e', 'sh', '-c', 'cd ' .. filepath .. ' && exec $SHELL' }, {
+--     detach = true
+--   })
+-- end, { desc = 'Open foot terminal at current file location' })
+
+-- Here is the reset of our map
+function f2()
+	vim.cmd('NvimTreeToggle')
+end
+
+function f3()
+	vim.cmd('Trouble diagnostics toggle')
+end
+
+function f6()
+	vim.cmd('set hlsearch')
+end
+
+function f8()
+	vim.cmd('lua insert_template()')
+end
+
+function f9()
+	vim.cmd('lua R()')
+end
+
+function f10()
+	vim.cmd('cd %:p:h')
+	vim.cmd('FTermToggle')
+end
+
+function f11()
+	vim.cmd('lua M()')
+end
+
+function f12()
+	vim.cmd('lua Check()')
+end
