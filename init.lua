@@ -19,6 +19,7 @@ require ("plugins.fterm")
 require ("plugins.lualine")
 require ("plugins.scrollbar")
 require ("core.keymaps")
+require ("core.markdown")
 --require ("plugins.noice")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

@@ -1,10 +1,24 @@
 -- Define the Run function
+local function is_c_family()
+    return vim.bo.filetype == 'c' or vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc'
+end
+
+local function compile_cmd()
+    if vim.bo.filetype == 'c' then
+        return 'term time gcc % -o %< -std=c17 -Wall -Wextra -Wshadow -Wformat=2 -Wconversion -pedantic'
+    elseif is_c_family() then
+        return 'term time g++ -O2 -std=c++2b -Wall -Wextra -Wfatal-errors -Wshadow -Wformat=2 -Wfloat-equal -DLOCAL -Wconversion -Winvalid-pch % -o %<'
+    end
+    return nil
+end
+
 function R()
     vim.cmd('w')
     vim.cmd('sp')
     vim.cmd('resize 30')
-    if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
-        vim.cmd('term time g++ -O2 -std=c++2b -Wall -Wextra -Wfatal-errors -Wshadow -Wformat=2 -Wfloat-equal -DLOCAL -Wconversion -Winvalid-pch % -o %<')
+    local cmd = compile_cmd()
+    if cmd then
+        vim.cmd(cmd)
         vim.cmd('200')
     elseif vim.bo.filetype == 'java' then
         vim.cmd('term javac %')
@@ -20,7 +34,7 @@ local fterm = require("FTerm")
 
 function M()
     vim.cmd('w')
-    if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
+    if is_c_family() then
         vim.cmd('w')
         vim.cmd('cd %:p:h')  -- Change to the file's directory
         fterm.scratch({
@@ -37,7 +51,7 @@ end
 
 function Modd()
     vim.cmd('w')
-    if vim.bo.filetype == 'cpp' or vim.bo.filetype == 'cc' then
+    if is_c_family() then
         vim.cmd('w')  -- Save the current file
         vim.cmd('cd %:p:h')  -- Change to the file's directory
         fterm.scratch({
@@ -62,7 +76,7 @@ function Mode()
   local wait_key = "read -n 1 -s -r -p 'Press any key to exit...'"
   local cmd = ""
 
-  if filetype == 'cpp' or filetype == 'cc' then
+  if filetype == 'c' or filetype == 'cpp' or filetype == 'cc' then
     cmd = string.format(
       "foot -e bash -c 'cd \"%s\" && time ./\"%s\"; %s'",
       file_dir, file_name_wo_ext, wait_key
